@@ -15,6 +15,7 @@ import com.chen.smartapplication.fragment.GirlFragment;
 import com.chen.smartapplication.fragment.UserFragment;
 import com.chen.smartapplication.fragment.WeChatFragment;
 import com.chen.smartapplication.ui.SettingActivity;
+import com.chen.smartapplication.utils.L;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initData();
         initView();
+
+
     }
 
     private void initData() {
@@ -56,10 +59,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         fab_setting = (FloatingActionButton) findViewById(R.id.fab_setting);
         fab_setting.setOnClickListener(this);
+        fab_setting.setVisibility(View.GONE);
         mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
 
         mViewPager.setOffscreenPageLimit(mFragment.size());
+
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 0) {
+                    fab_setting.setVisibility(View.GONE);
+                } else {
+                    fab_setting.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
