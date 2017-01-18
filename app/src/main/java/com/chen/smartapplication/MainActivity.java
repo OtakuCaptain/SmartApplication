@@ -15,7 +15,7 @@ import com.chen.smartapplication.fragment.GirlFragment;
 import com.chen.smartapplication.fragment.UserFragment;
 import com.chen.smartapplication.fragment.WeChatFragment;
 import com.chen.smartapplication.ui.SettingActivity;
-import com.chen.smartapplication.utils.L;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initData();
         initView();
-
-
     }
 
     private void initData() {
