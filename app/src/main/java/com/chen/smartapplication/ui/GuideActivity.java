@@ -107,7 +107,7 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         switch (v.getId()) {
             case R.id.btn_start:
                 //跳转主页面
