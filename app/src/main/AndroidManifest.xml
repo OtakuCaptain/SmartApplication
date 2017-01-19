@@ -44,6 +44,8 @@
             android:label="登陆"/>
         <activity android:name=".ui.RegisteredActivity"
             android:label="注册"/>
+        <activity android:name=".ui.ForgetPasswordActivity"
+            android:label="忘记密码"/>
     </application>
 
 </manifest>

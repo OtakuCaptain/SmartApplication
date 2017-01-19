@@ -51,7 +51,7 @@ public class RegisteredActivity extends BaseActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_registered:
+            case R.id.btnRegistered:
                 String name = et_user.getText().toString().trim();
                 String age = et_age.getText().toString().trim();
                 String desc = et_desc.getText().toString().trim();
@@ -99,7 +99,7 @@ public class RegisteredActivity extends BaseActivity implements View.OnClickList
                                     Toast.makeText(RegisteredActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
                                     finish();
                                 } else {
-                                    Toast.makeText(RegisteredActivity.this, "注册成功" + e.toString(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisteredActivity.this, "注册失败" + e.toString(), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

@@ -4,16 +4,19 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chen.smartapplication.MainActivity;
 import com.chen.smartapplication.R;
 import com.chen.smartapplication.entity.MyUser;
 import com.chen.smartapplication.utils.ShareUtils;
+import com.chen.smartapplication.view.CustomDialog;
 
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
@@ -25,6 +28,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText et_password;
     private Button btnRegistered;
     private CheckBox keep_password;
+    private TextView tv_forget;
+    private CustomDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +39,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initView() {
+        dialog = new CustomDialog(this, 100, 100, R.layout.dialog_loading, R.style.Theme_dialog, Gravity.CENTER, R.style.pop_anim_style);
+        dialog.setCancelable(false);
+
+        tv_forget = (TextView) findViewById(R.id.tv_forget);
+        tv_forget.setOnClickListener(this);
         et_name = (EditText) findViewById(R.id.et_name);
         et_password = (EditText) findViewById(R.id.et_password);
         keep_password = (CheckBox) findViewById(R.id.keep_password);
         //设置选中状态
         boolean isCheck = ShareUtils.getBoolean(this, "keeppass", false);
         keep_password.setChecked(isCheck);
-        if (isCheck){
+        if (isCheck) {
             //回显
-            et_name.setText(ShareUtils.getString(this,"name",""));
-            et_password.setText(ShareUtils.getString(this,"password",""));
+            et_name.setText(ShareUtils.getString(this, "name", ""));
+            et_password.setText(ShareUtils.getString(this, "password", ""));
         }
 
         btnLogin = (Button) findViewById(R.id.btnLogin);
@@ -55,6 +65,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.tv_forget:
+                startActivity(new Intent(getApplicationContext(), ForgetPasswordActivity.class));
+                break;
             case R.id.btn_registered:
                 startActivity(new Intent(getApplicationContext(), RegisteredActivity.class));
                 break;
@@ -65,6 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String password = et_password.getText().toString().trim();
                 //判断是否为空
                 if (!TextUtils.isEmpty(name) & !TextUtils.isEmpty(password)) {
+                    dialog.show();
                     //登录
                     final MyUser user = new MyUser();
                     user.setUsername(name);
@@ -73,6 +87,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     user.login(new SaveListener<MyUser>() {
                         @Override
                         public void done(MyUser myUser, BmobException e) {
+                            dialog.dismiss();
                             //判断结果
                             if (e == null) {
                                 //判断邮箱是否验证
@@ -80,7 +95,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     //跳转
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
-
                                 } else {
                                     Toast.makeText(LoginActivity.this, "请前往邮箱进行验证", Toast.LENGTH_SHORT).show();
                                 }
