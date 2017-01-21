@@ -9,7 +9,7 @@ import com.chen.smartapplication.R;
  * Created by chen on 2017-01-17.
  */
 
-public class SettingActivity extends BaseActivity {
+public class SettingActivity extends BackActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {

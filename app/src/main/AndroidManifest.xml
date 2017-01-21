@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chen.smartapplication">
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_LOGS" />
     <!--允许联网 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -32,20 +33,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.BaseActivity" />
+        <activity android:name=".ui.BackActivity" />
         <activity
             android:name=".ui.GuideActivity"
             android:theme="@style/NoActionBarFullScreen" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".permisson.BaseActivity" />
         <activity
             android:name=".ui.SettingActivity"
             android:label="@string/text_setting" />
-        <activity android:name=".ui.LoginActivity"
-            android:label="登陆"/>
-        <activity android:name=".ui.RegisteredActivity"
-            android:label="注册"/>
-        <activity android:name=".ui.ForgetPasswordActivity"
-            android:label="忘记密码"/>
+        <activity
+            android:name=".ui.LoginActivity"
+            android:label="登陆" />
+        <activity
+            android:name=".ui.RegisteredActivity"
+            android:label="注册" />
+        <activity
+            android:name=".ui.ForgetPasswordActivity"
+            android:label="忘记密码" />
     </application>
 
 </manifest>

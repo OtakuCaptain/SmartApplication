@@ -1,7 +1,6 @@
 package com.chen.smartapplication.ui;
 
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +14,7 @@ import com.chen.smartapplication.entity.MyUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
-public class RegisteredActivity extends BaseActivity implements View.OnClickListener {
+public class RegisteredActivity extends BackActivity implements View.OnClickListener {
 
     private EditText et_user;
     private EditText et_age;

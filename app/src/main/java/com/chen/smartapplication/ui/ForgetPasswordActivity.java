@@ -17,7 +17,7 @@ import cn.bmob.v3.listener.UpdateListener;
  * Created by chen on 2017-01-19.
  */
 
-public class ForgetPasswordActivity extends BaseActivity implements View.OnClickListener {
+public class ForgetPasswordActivity extends BackActivity implements View.OnClickListener {
 
     private Button btn_forget_password;
     private EditText et_email;

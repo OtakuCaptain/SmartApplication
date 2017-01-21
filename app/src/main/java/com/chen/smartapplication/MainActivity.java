@@ -9,18 +9,20 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.BaseAdapter;
 
 import com.chen.smartapplication.fragment.ButlerFragment;
 import com.chen.smartapplication.fragment.GirlFragment;
 import com.chen.smartapplication.fragment.UserFragment;
 import com.chen.smartapplication.fragment.WeChatFragment;
+import com.chen.smartapplication.permisson.BaseActivity;
 import com.chen.smartapplication.ui.SettingActivity;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
